@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Icon name="heart" scale="6" style="color: red" />
+    <p class="headline">cocktail <Icon name="wine-glass" scale="6" /> lover</p>
     <div class="counter">
       <p>{{counter}}</p>
     </div>
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import "vue-awesome/icons/heart";
+import "vue-awesome/icons/wine-glass";
 import Icon from "vue-awesome/components/Icon";
 
 export default {
@@ -23,11 +23,17 @@ export default {
 <style lang="scss" scoped>
 .wrapper {
   cursor: pointer;
+  margin-top: 1em;
+}
+.headline {
+  font-size: 3em;
+  margin: 0;
 }
 .counter {
+  padding-left: 1.8em;
   font-size: 2em;
   position: absolute;
-  top: 1.5em;
+  top: 1em;
   z-index: 555;
   width: 100%;
   p {
