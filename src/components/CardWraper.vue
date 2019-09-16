@@ -13,7 +13,7 @@
       <md-button
         class="md-icon-button md-primary"
         v-on:click="() => {
-            likeCocktail(cocktail.idDrink)
+            likeCocktail(cocktails[cocktails.length -1])
             animateBox('right')
             getRandomCocktail()
           }"
@@ -71,7 +71,7 @@ export default {
         });
     }
   },
-  mounted: function() {
+  created: function() {
     axios
       .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
       .then(response => {

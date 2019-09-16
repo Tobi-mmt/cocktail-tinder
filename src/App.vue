@@ -1,25 +1,37 @@
 <template>
   <div id="app">
-    <CardWraper :likeCocktail="likeCocktail" />
+    <div v-on:click="() => toggleList()">
+      <LikeCounter :counter="likedCocktails.length" />
+    </div>
+    <LikeList :cocktails="likedCocktails" v-if="viewList" />
+    <CardWraper :likeCocktail="likeCocktail" v-if="!viewList"/>
   </div>
 </template>
 
 <script>
 import CardWraper from "./components/CardWraper.vue";
+import LikeCounter from "./components/LikeCounter.vue";
+import LikeList from "./components/LikeList.vue";
 
 export default {
   name: "app",
   components: {
-    CardWraper
+    CardWraper,
+    LikeCounter,
+    LikeList
   },
   data: function() {
     return {
-      likedCocktails: []
+      likedCocktails: [],
+      viewList: false
     };
   },
   methods: {
-    likeCocktail: function(idDrink) {
-      this.likedCocktails.push(idDrink);
+    likeCocktail: function(drink) {
+      this.likedCocktails.push(drink);
+    },
+    toggleList: function() {
+      this.viewList = !this.viewList;
     }
   }
 };
