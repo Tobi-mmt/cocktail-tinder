@@ -3,14 +3,17 @@
     <md-list>
       <md-list-item
         class="md-double-line"
-        v-for="cocktail in cocktails"
+        v-for="(cocktail, idx) in cocktails"
         v-bind:key="cocktail.idDrink"
       >
         <md-avatar>
           <img v-bind:src="cocktail.strDrinkThumb" />
         </md-avatar>
 
-        <div class="md-list-item-text">
+        <div
+          class="md-list-item-text"
+          v-on:click="goTo(`https://www.thecocktaildb.com/drink/${cocktail.idDrink}`)"
+        >
           <span>{{cocktail.strDrink}}</span>
           <p>
             {{cocktail.strIngredient1}}
@@ -21,9 +24,9 @@
             <span v-if="cocktail.strIngredient4">, ...</span>
           </p>
         </div>
-        <md-button class="md-icon-button md-list-action" v-on:click="goTo(`https://www.thecocktaildb.com/drink/${cocktail.idDrink}`)">
+        <md-button class="md-icon-button md-list-action" v-on:click="deleteCocktail(idx)">
           <md-icon class="md-primary">
-            <Icon name="external-link-alt" scale="1.5" />
+            <Icon name="times" scale="1.5" />
           </md-icon>
         </md-button>
       </md-list-item>
@@ -32,12 +35,12 @@
 </template>
 
 <script>
-import "vue-awesome/icons/external-link-alt";
+import "vue-awesome/icons//times";
 import Icon from "vue-awesome/components/Icon";
 
 export default {
   name: "LikeList",
-  props: ["cocktails"],
+  props: ["cocktails", "deleteCocktail"],
   components: {
     Icon
   },
@@ -53,5 +56,11 @@ export default {
 .wrapper {
   max-width: 800px;
   margin: 0 auto;
+}
+.md-list-item-text {
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 }
 </style>

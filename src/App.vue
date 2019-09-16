@@ -3,7 +3,7 @@
     <div v-on:click="() => toggleList()">
       <LikeCounter :counter="likedCocktails.length" />
     </div>
-    <LikeList :cocktails="likedCocktails" v-if="viewList" />
+    <LikeList :cocktails="likedCocktails" v-if="viewList" :deleteCocktail="deleteCocktail" />
     <CardWraper :likeCocktail="likeCocktail" v-if="!viewList"/>
   </div>
 </template>
@@ -36,6 +36,12 @@ export default {
     },
     toggleList: function() {
       this.viewList = !this.viewList;
+    },
+    deleteCocktail: function(cocktailIdx) {
+      const drinks = JSON.parse(localStorage.getItem('likedCocktails'))
+      drinks.splice(cocktailIdx, 1)
+      localStorage.setItem('likedCocktails', JSON.stringify(drinks))
+      this.likedCocktails = drinks
     }
   },
   created: function() {
