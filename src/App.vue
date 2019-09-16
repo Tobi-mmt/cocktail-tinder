@@ -28,11 +28,19 @@ export default {
   },
   methods: {
     likeCocktail: function(drink) {
-      this.likedCocktails.push(drink);
+      const storage = JSON.parse(localStorage.getItem('likedCocktails'))
+      const drinks = storage || []
+      drinks.push(drink);
+      localStorage.setItem('likedCocktails', JSON.stringify(drinks))
+      this.likedCocktails = drinks
     },
     toggleList: function() {
       this.viewList = !this.viewList;
     }
+  },
+  created: function() {
+    const storage = JSON.parse(localStorage.getItem('likedCocktails'))
+    this.likedCocktails = storage || []
   }
 };
 </script>
