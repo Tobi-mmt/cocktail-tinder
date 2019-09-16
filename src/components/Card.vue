@@ -1,29 +1,19 @@
 <template>
   <md-card>
     <md-card-media>
-      <img src="https://www.thecocktaildb.com/images/media/drink/ruxuvp1472669600.jpg" alt="People">
+      <img v-bind:src="cocktail.strDrinkThumb" />
     </md-card-media>
 
     <md-card-header>
-      <div class="md-title">Title goes here</div>
-      <div class="md-subhead">Subtitle here</div>
+      <div class="md-title">{{cocktail.strDrink}}</div>
+      <div class="md-subhead">
+        {{cocktail.strIngredient1}}<span v-if="cocktail.strIngredient2">, {{cocktail.strIngredient2}}</span><span v-if="cocktail.strIngredient3">, {{cocktail.strIngredient3}}</span><span v-if="cocktail.strIngredient4">, ...</span>
+      </div>
     </md-card-header>
 
     <md-card-expand>
-      <md-card-actions md-alignment="space-between">
-        <div>
-          <md-button>Action</md-button>
-        </div>
-
-        <md-card-expand-trigger>
-          <md-button>Learn more</md-button>
-        </md-card-expand-trigger>
-      </md-card-actions>
-
       <md-card-expand-content>
-        <md-card-content>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.
-        </md-card-content>
+        <md-card-content>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.</md-card-content>
       </md-card-expand-content>
     </md-card-expand>
   </md-card>
@@ -32,20 +22,19 @@
 
 
 <script>
-  export default {
-    name: 'Card'
-  }
+export default {
+  name: "Card",
+  props: ["cocktail"]
+};
 </script>
 
 <style lang="scss" scoped>
-  .card-expansion {
-    height: 480px;
-  }
-
-  .md-card {
-    width: 320px;
-    margin: 4px;
-    display: inline-block;
-    vertical-align: top;
-  }
+.md-card {
+  background-color: white;
+  width: 90%;
+  max-width: 800px;
+  margin: 4px;
+  display: inline-block;
+  vertical-align: top;
+}
 </style>
