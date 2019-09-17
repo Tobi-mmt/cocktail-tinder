@@ -72,16 +72,13 @@ export default {
     }
   },
   created: function() {
-    axios
-      .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
-      .then(response => {
-        this.cocktails.unshift(response.data.drinks[0]);
-      });
-    axios
-      .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
-      .then(response => {
-        this.cocktails.unshift(response.data.drinks[0]);
-      });
+    [0,1].forEach(() => {
+      axios
+        .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+        .then(response => {
+          this.cocktails.unshift(response.data.drinks[0]);
+        });
+    });
   }
 };
 </script>
