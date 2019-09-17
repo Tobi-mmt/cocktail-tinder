@@ -85,9 +85,12 @@ export default {
 
 <style lang="scss" scoped>
 .md-button {
-  margin: 0 3em;
   width: 90px;
   height: 90px;
+
+  &:first-of-type {
+    margin-right: 3em;
+  }
 }
 #card-wrapper {
   display: flex;
