@@ -52,6 +52,9 @@ export default {
   line-height: 0;
   margin: auto !important;
 }
+.md-subhead{
+  min-height: 2em;
+}
 .md-card {
   background-color: white;
   width: 90%;

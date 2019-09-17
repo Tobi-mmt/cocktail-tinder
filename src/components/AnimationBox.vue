@@ -28,5 +28,10 @@ export default {
   transition: transform 0.5s;
   transform-origin: 50% 400%;
   position: absolute;
+  top: 0;
+
+  &:last-of-type {
+    position: relative;
+  }
 }
 </style>

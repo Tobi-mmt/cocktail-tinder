@@ -30,10 +30,10 @@ export default {
   margin: 0;
 }
 .counter {
-  padding-left: 1.8em;
+  padding-left: 1.7em;
   font-size: 2em;
   position: absolute;
-  top: 1em;
+  top: 1.3em;
   z-index: 555;
   width: 100%;
   p {

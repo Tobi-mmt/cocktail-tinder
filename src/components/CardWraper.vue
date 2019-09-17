@@ -95,8 +95,6 @@ export default {
 #card-wrapper {
   display: flex;
   position: relative;
-  height: 100vh;
-  width: 100vw;
   flex-direction: column;
   overflow: hidden;
 }
