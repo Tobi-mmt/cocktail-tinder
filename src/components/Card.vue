@@ -10,15 +10,23 @@
         <span v-for="index in 15" :key="index">
           <span v-if="cocktail[`strIngredient${index}`]">
             <span v-if="index !== 1">,</span>
-            {{cocktail[`strIngredient${index}`]}}
+            {{cocktail[`strMeasure${index}`]}} {{cocktail[`strIngredient${index}`]}}
           </span>
         </span>
       </div>
     </md-card-header>
 
+    <md-card-actions md-alignment="space-between">
+      <md-card-expand-trigger>
+        <md-button class="md-icon-button">
+          <Icon name="chevron-down" />
+        </md-button>
+      </md-card-expand-trigger>
+    </md-card-actions>
+
     <md-card-expand>
       <md-card-expand-content>
-        <md-card-content>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.</md-card-content>
+        <md-card-content>{{cocktail.strInstructions}}</md-card-content>
       </md-card-expand-content>
     </md-card-expand>
   </md-card>
@@ -27,13 +35,23 @@
 
 
 <script>
+import "vue-awesome/icons/chevron-down";
+import Icon from "vue-awesome/components/Icon";
+
 export default {
   name: "Card",
-  props: ["cocktail"]
+  props: ["cocktail"],
+  components: {
+    Icon
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+.md-button {
+  line-height: 0;
+  margin: auto !important;
+}
 .md-card {
   background-color: white;
   width: 90%;
