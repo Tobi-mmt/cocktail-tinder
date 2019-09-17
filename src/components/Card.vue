@@ -7,7 +7,12 @@
     <md-card-header>
       <div class="md-title">{{cocktail.strDrink}}</div>
       <div class="md-subhead">
-        {{cocktail.strIngredient1}}<span v-if="cocktail.strIngredient2">, {{cocktail.strIngredient2}}</span><span v-if="cocktail.strIngredient3">, {{cocktail.strIngredient3}}</span><span v-if="cocktail.strIngredient4">, ...</span>
+        <span v-for="index in 15" :key="index">
+          <span v-if="cocktail[`strIngredient${index}`]">
+            <span v-if="index !== 1">,</span>
+            {{cocktail[`strIngredient${index}`]}}
+          </span>
+        </span>
       </div>
     </md-card-header>
 

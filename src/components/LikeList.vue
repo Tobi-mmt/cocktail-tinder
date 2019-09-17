@@ -1,53 +1,21 @@
 <template>
   <div class="wrapper">
     <md-list>
-      <md-list-item
-        class="md-double-line"
-        v-for="(cocktail, idx) in cocktails"
-        v-bind:key="cocktail.idDrink"
-      >
-        <md-avatar>
-          <img v-bind:src="cocktail.strDrinkThumb" />
-        </md-avatar>
-
-        <div
-          class="md-list-item-text"
-          v-on:click="goTo(`https://www.thecocktaildb.com/drink/${cocktail.idDrink}`)"
-        >
-          <span>{{cocktail.strDrink}}</span>
-          <p>
-            {{cocktail.strIngredient1}}
-            <span
-              v-if="cocktail.strIngredient2"
-            >, {{cocktail.strIngredient2}}</span>
-            <span v-if="cocktail.strIngredient3">, {{cocktail.strIngredient3}}</span>
-            <span v-if="cocktail.strIngredient4">, ...</span>
-          </p>
-        </div>
-        <md-button class="md-icon-button md-list-action" v-on:click="deleteCocktail(idx)">
-          <md-icon class="md-primary">
-            <Icon name="times" scale="1.5" />
-          </md-icon>
-        </md-button>
-      </md-list-item>
+      <div v-for="(cocktail, idx) in cocktails" v-bind:key="cocktail.idDrink">
+        <LikeListItem :cocktail="cocktail" :deleteCocktail="deleteCocktail" :idx="idx" />
+      </div>
     </md-list>
   </div>
 </template>
 
 <script>
-import "vue-awesome/icons//times";
-import Icon from "vue-awesome/components/Icon";
+import LikeListItem from "./LikeListItem";
 
 export default {
   name: "LikeList",
   props: ["cocktails", "deleteCocktail"],
   components: {
-    Icon
-  },
-  methods: {
-    goTo: function(url) {
-      window.open(url);
-    }
+    LikeListItem
   }
 };
 </script>
@@ -56,11 +24,5 @@ export default {
 .wrapper {
   max-width: 800px;
   margin: 0 auto;
-}
-.md-list-item-text {
-  cursor: pointer;
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
 }
 </style>
