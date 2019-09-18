@@ -17,15 +17,15 @@ export default {
 <style lang="scss" scoped>
 .right {
   z-index: 99;
-  transform: rotate(90deg);
+  transform: rotate(50deg);
 }
 .left {
   z-index: 99;
-  transform: rotate(-90deg);
+  transform: rotate(-50deg);
 }
 #animated-box {
   width: 100%;
-  transition: transform 0.5s;
+  transition: transform 0.3s;
   transform-origin: 50% 400%;
   position: absolute;
   top: 0;

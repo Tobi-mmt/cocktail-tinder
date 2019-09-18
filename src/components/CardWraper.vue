@@ -61,7 +61,7 @@ export default {
       setTimeout(() => {
         this.animation = "stop";
         this.cocktails.pop();
-      }, 1000);
+      }, 300);
     },
     getRandomCocktail: function() {
       axios
@@ -72,7 +72,7 @@ export default {
     }
   },
   created: function() {
-    [0,1].forEach(() => {
+    [0,1,2,3,4].forEach(() => {
       axios
         .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
         .then(response => {
